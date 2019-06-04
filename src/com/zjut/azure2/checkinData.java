@@ -9,8 +9,22 @@ public class checkinData {
 	private String idtype;
 	private String id;
 	private String type;
+	private String status;
 	
 	
+	
+	public String getStatus() {
+		return status;
+	}
+
+
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+
+
 	public String getType() {
 		return type;
 	}

@@ -12,11 +12,11 @@ public class checkinDao extends BaseDao{
 		// TODO Auto-generated constructor stub
 	}
 	
-	//获得空闲房间号
+	//获得空闲或预约房间号
 	public ArrayList<checkinData> findRoom() {
 
 		ArrayList<checkinData> checkinDatas = new ArrayList<>();
-		String sql = "SELECT Room.Rnum,Room.Rtype,Type.Tprice FROM Room,Type WHERE Room.Rtype=Type.Ttype and Room.Rstatus<>'有客'";
+		String sql = "SELECT Room.Rnum,Room.Rtype,Room.Rstatus,Room.Rname,Room.Rcheckin,Room.Rcheckout,Type.Tprice FROM Room,Type WHERE Room.Rtype=Type.Ttype and Room.Rstatus<>'有客'";
 		try {
 			Connection connection = dataSource.getConnection();
 			PreparedStatement pStatement = connection.prepareStatement(sql);
@@ -26,7 +26,10 @@ public class checkinDao extends BaseDao{
 				checkinData.setNum(resultSet.getString("Rnum").trim());
 				checkinData.setType(resultSet.getString("Rtype").trim());
 				checkinData.setPrice(resultSet.getFloat("Tprice"));
-
+				checkinData.setStatus(resultSet.getString("Rstatus").trim());
+				checkinData.setName(resultSet.getString("Rname").trim());
+				checkinData.setCheckin(resultSet.getString("Rcheckin").trim());
+				checkinData.setCheckout(resultSet.getString("Rcheckout").trim());
 				checkinDatas.add(checkinData);
 			}
 			connection.close();
