@@ -27,9 +27,16 @@ public class checkinDao extends BaseDao{
 				checkinData.setType(resultSet.getString("Rtype").trim());
 				checkinData.setPrice(resultSet.getFloat("Tprice"));
 				checkinData.setStatus(resultSet.getString("Rstatus").trim());
-				checkinData.setName(resultSet.getString("Rname").trim());
-				checkinData.setCheckin(resultSet.getString("Rcheckin").trim());
-				checkinData.setCheckout(resultSet.getString("Rcheckout").trim());
+				if(resultSet.getString("Rname")!=null) {
+					checkinData.setName(resultSet.getString("Rname").trim());
+				}
+				if(resultSet.getString("Rcheckin")!=null) {
+					checkinData.setCheckin(resultSet.getString("Rcheckin").trim());
+				}
+				if(resultSet.getString("Rcheckout")!=null) {
+					checkinData.setCheckout(resultSet.getString("Rcheckout").trim());
+				}
+				
 				checkinDatas.add(checkinData);
 			}
 			connection.close();
