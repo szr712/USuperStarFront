@@ -247,7 +247,13 @@
 									<td class="center"><%=WholeData.get(i).getName()%></td>
 									<td class="center"><%=WholeData.get(i).getId()%></td>
 									<td class="center"><%=WholeData.get(i).getIdtype()%></td>
-									<td class="center"><%=WholeData.get(i).getStatus()%></td>
+									<%if(WholeData.get(i).getStatus().equals("空闲")){ %>
+									<td class="center"><span class="label label-sm label-success"><%=WholeData.get(i).getStatus()%></span></td>
+									<%} else if(WholeData.get(i).getStatus().equals("预约")){ %>
+									<td class="center"><span class="label label-sm label-inverse arrowed-in"><%=WholeData.get(i).getStatus()%></span></td>
+									<%}else { %>
+									<td class="center"><span class="label label-sm label-warning"><%=WholeData.get(i).getStatus()%></span></td>
+									<%} %>
 									<td class="center"><%=WholeData.get(i).getCheckin()%></td>
 									<td class="center"><%=WholeData.get(i).getCheckout()%></td>
 									<td class="center"><%=WholeData.get(i).getMark()%></td>

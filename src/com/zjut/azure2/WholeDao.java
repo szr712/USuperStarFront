@@ -16,7 +16,6 @@ public class WholeDao extends BaseDao {
 		// TODO Auto-generated constructor stub
 	}
 
-
 	// 查询所有房型
 	public ArrayList<WholeData> findWhole() {
 
@@ -27,39 +26,45 @@ public class WholeDao extends BaseDao {
 			PreparedStatement pStatement = connection.prepareStatement(sql);
 			ResultSet resultSet = pStatement.executeQuery();
 			while (resultSet.next()) {
-				//Book book = new Book();
-				WholeData WholeData =new WholeData();				 
-				WholeData.setNum(resultSet.getString("Rnum").trim());					
+				// Book book = new Book();
+				WholeData WholeData = new WholeData();
+				WholeData.setNum(resultSet.getString("Rnum").trim());
 				WholeData.setType(resultSet.getString("Rtype").trim());
 				WholeData.setStatus(resultSet.getString("Rstatus").trim());
 				WholeData.setPrice(resultSet.getFloat("Tprice"));
-				
-				
-				if(resultSet.getString("Rremark")!=null&&resultSet.getString("Rremark")!="")
-				WholeData.setMark(resultSet.getString("Rremark").trim());
-				else WholeData.setMark("无");
-				
-				if(resultSet.getString("Rcheckin")!=null&&resultSet.getString("Rcheckin")!="")
-				WholeData.setCheckin(resultSet.getString("Rcheckin").trim());
-				else WholeData.setCheckin("/");
-				
-				if(resultSet.getString("Rcheckout")!=null&&resultSet.getString("Rcheckout")!="")
-				WholeData.setCheckout(resultSet.getString("Rcheckout").trim());
-				else WholeData.setCheckout("/");
-				
-				if(resultSet.getString("Rid")!=null&&resultSet.getString("Rid")!="")
-				WholeData.setId(resultSet.getString("Rid").trim());
-				else WholeData.setId("/");
-				
-				if(resultSet.getString("Ridtype")!=null&&resultSet.getString("Ridtype")!="")
-				WholeData.setIdtype(resultSet.getString("Ridtype").trim());
-				else WholeData.setIdtype("/");
-				
-				if(resultSet.getString("Rname")!=null&&resultSet.getString("Rname")!="")
-				WholeData.setName(resultSet.getString("Rname").trim());
-				else WholeData.setName("/");
-				
-				Wholelist.add(WholeData);			
+
+				//resultSet.getString("Rremark");
+				if (resultSet.getString("Rremark") != null && !resultSet.getString("Rremark").trim().equals(""))
+					WholeData.setMark(resultSet.getString("Rremark").trim());
+				else
+					WholeData.setMark("无");
+
+				if (resultSet.getString("Rcheckin") != null && !resultSet.getString("Rcheckin").trim().equals(""))
+					WholeData.setCheckin(resultSet.getString("Rcheckin").trim());
+				else
+					WholeData.setCheckin("/");
+
+				if (resultSet.getString("Rcheckout") != null && !resultSet.getString("Rcheckout").trim().equals(""))
+					WholeData.setCheckout(resultSet.getString("Rcheckout").trim());
+				else
+					WholeData.setCheckout("/");
+
+				if (resultSet.getString("Rid") != null && !resultSet.getString("Rid").trim().equals(""))
+					WholeData.setId(resultSet.getString("Rid").trim());
+				else
+					WholeData.setId("/");
+
+				if (resultSet.getString("Ridtype") != null && !resultSet.getString("Ridtype").trim().equals(""))
+					WholeData.setIdtype(resultSet.getString("Ridtype").trim());
+				else
+					WholeData.setIdtype("/");
+
+				if (resultSet.getString("Rname") != null && !resultSet.getString("Rname").trim().equals(""))
+					WholeData.setName(resultSet.getString("Rname").trim());
+				else
+					WholeData.setName("/");
+
+				Wholelist.add(WholeData);
 
 			}
 			connection.close();
