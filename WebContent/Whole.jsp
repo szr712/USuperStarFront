@@ -245,8 +245,8 @@
 									<td class="center"><%=WholeData.get(i).getType()%></td>
 									<td class="center"><%=WholeData.get(i).getPrice()%></td>
 									<td class="center"><%=WholeData.get(i).getName()%></td>
-									<td class="center"><%=WholeData.get(i).getId()%></td>
 									<td class="center"><%=WholeData.get(i).getIdtype()%></td>
+									<td class="center"><%=WholeData.get(i).getId()%></td>
 									<%if(WholeData.get(i).getStatus().equals("空闲")){ %>
 									<td class="center"><span class="label label-sm label-success"><%=WholeData.get(i).getStatus()%></span></td>
 									<%} else if(WholeData.get(i).getStatus().equals("预约")){ %>
